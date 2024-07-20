@@ -1,7 +1,13 @@
 #pragma once
 
-namespace coral {
+#include "reflection.hpp"
 
-class Resource {};
+namespace coral
+{
+
+struct Resource
+{
+    REFLECT(Resource);
+};
 
 } // namespace coral

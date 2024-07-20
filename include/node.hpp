@@ -1,7 +1,17 @@
 #pragma once
 
-namespace coral {
+#include "reflection.hpp"
 
-class Node {};
+namespace coral
+{
+
+class Node
+{
+  public:
+    std::vector<Node *> children;
+    std::string name;
+
+    REFLECT(Node)
+};
 
 } // namespace coral

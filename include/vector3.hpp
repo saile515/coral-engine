@@ -1,9 +1,11 @@
 #pragma once
 
-namespace coral {
+namespace coral
+{
 
 template <typename T = double>
-class Vector3 {
+class Vector3
+{
   private:
     T m_x;
     T m_y;
@@ -16,7 +18,8 @@ class Vector3 {
 };
 
 template <typename T>
-void Vector3<T>::set(T x, T y, T z) {
+void Vector3<T>::set(T x, T y, T z)
+{
     m_x = x;
     m_y = y;
     m_z = z;

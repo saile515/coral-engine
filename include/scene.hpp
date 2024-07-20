@@ -1,9 +1,17 @@
 #pragma once
 
+#include "node.hpp"
 #include "resource.hpp"
+#include <vector>
 
-namespace coral {
+namespace coral
+{
 
-class Scene : public Resource {};
+struct Scene : Resource
+{
+    std::vector<Node *> children;
+
+    REFLECT(Scene)
+};
 
 } // namespace coral

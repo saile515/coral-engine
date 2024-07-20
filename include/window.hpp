@@ -2,9 +2,11 @@
 
 struct GLFWwindow;
 
-namespace coral {
+namespace coral
+{
 
-class Window {
+class Window
+{
   private:
     GLFWwindow *m_window_handle;
 
