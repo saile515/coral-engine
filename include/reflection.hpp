@@ -18,7 +18,8 @@ class Node;
                                                                                \
   public:                                                                      \
     Struct();                                                                  \
-    std::optional<coral::Variant> operator[](std::string name);
+    std::optional<coral::Variant> operator[](std::string name);                \
+    void update_properties();
 
 #define START_REFLECTION(Struct)                                               \
     std::optional<coral::Variant> Struct::operator[](std::string name)         \
@@ -31,7 +32,9 @@ class Node;
         return m_properties[name];                                             \
     }                                                                          \
                                                                                \
-    Struct::Struct()                                                           \
+    Struct::Struct() { update_properties(); }                                  \
+                                                                               \
+    void Struct::update_properties()                                           \
     {
 
 #define REFLECT_PROPERTY(property)                                             \
@@ -40,7 +43,7 @@ class Node;
 #define END_REFLECTION() }
 
 typedef std::variant<double *, int *, bool *, std::string *, Vector3<double> *,
-                     Node *, Node **, std::vector<Node *> *>
+                     Node **, std::vector<Node *> *>
     Variant;
 
 } // namespace coral

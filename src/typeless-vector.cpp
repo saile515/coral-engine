@@ -37,8 +37,8 @@ void TypelessVector::push_back(void *value)
 
 void *TypelessVector::back()
 {
-    return (void *)(((unsigned char *)(m_buffer)) +
-                    (m_size - 1) * m_element_size);
+    return static_cast<unsigned char *>(m_buffer) +
+           (m_size - 1) * m_element_size;
 }
 
 } // namespace coral

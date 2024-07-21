@@ -44,9 +44,8 @@ void CoralEngine::register_node(std::string name)
 {
     static_assert(std::is_base_of<Node, NodeType>::value,
                   "NodeType must inherit from coral::Node.");
-    m_node_types[name] = NodeTypeInfo{
-        .constructor = reinterpret_cast<Node *(*)()>(&NodeType::create),
-        .size = sizeof(NodeType)};
+    m_node_types[name] = NodeTypeInfo{.constructor = &Node::create<NodeType>,
+                                      .size = sizeof(NodeType)};
 }
 
 } // namespace coral

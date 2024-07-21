@@ -2,6 +2,7 @@
 
 #include "coral-engine.hpp"
 #include "log.hpp"
+#include "string.hpp"
 
 namespace coral
 {
@@ -32,7 +33,10 @@ static void parse_primitive(rapidxml::xml_node<> *node_tree, Variant node,
         return;
     }
 
-    property.value()->assign(node_tree->value());
+    std::string value(node_tree->value());
+    string::trim(value);
+
+    property.value()->assign(value);
 }
 
 void ResourceParser::load_xml_node(rapidxml::xml_node<> *node_tree,
@@ -119,7 +123,7 @@ ResourceParser::get_attribute(rapidxml::xml_node<> *node,
                               std::string attribute_name)
 {
     rapidxml::xml_attribute<> *attribute =
-        node->first_attribute("attribute_name");
+        node->first_attribute(attribute_name.c_str());
 
     if (attribute == nullptr)
     {

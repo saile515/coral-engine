@@ -11,6 +11,7 @@ set(PROJECT_SOURCES
     src/node.cpp
     src/resource-parser.cpp
     src/resource.cpp
+    src/string.cpp
     src/typeless-vector.cpp
     src/window.cpp)
 set(PROJECT_HEADERS
@@ -24,6 +25,7 @@ set(PROJECT_HEADERS
     include/resource-parser.hpp
     include/resource.hpp
     include/scene.hpp
+    include/string.hpp
     include/typeless-vector.hpp
     include/vector3.hpp
     include/window.hpp)
@@ -41,3 +43,4 @@ add_library(${PROJECT_NAME} SHARED ${PROJECT_SOURCES} ${PROJECT_HEADERS})
 target_include_directories(${PROJECT_NAME}
                            PUBLIC ${PROJECT_INCLUDE_DIRECTORIES})
 target_link_libraries(${PROJECT_NAME} PRIVATE ${PROJECT_LIBRARIES})
+target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -Wpedantic -Werror)
