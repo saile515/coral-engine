@@ -27,6 +27,8 @@ std::optional<Node *> CoralEngine::create_node(std::string type)
 
     m_nodes.at(type).push_back(node);
 
+    free(node);
+
     Node *new_node = static_cast<Node *>(m_nodes.at(type).back());
 
     new_node->update_properties();
